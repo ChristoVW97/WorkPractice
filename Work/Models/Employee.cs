@@ -2,7 +2,7 @@
 
 namespace Work.Models
 {
-    public class Employees
+    public class Employee
     {
         [Key]
         public int Id { get; set; }
