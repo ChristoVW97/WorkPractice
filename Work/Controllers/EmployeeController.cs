@@ -26,9 +26,18 @@ namespace Work.Controllers
         [HttpPost]
         public IActionResult Create(Employee obj)
         {
-            _db.Employees.Add(obj);
-            _db.SaveChanges();
-            return RedirectToAction("Index");
+            if (obj.Name == obj.DisplayOrder.ToString())
+            {
+                ModelState.AddModelError("name", "The display order cannot exactly match the name");
+            }
+
+            if (ModelState.IsValid)
+            {
+                _db.Employees.Add(obj);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+           return View();
         }
 
     }
