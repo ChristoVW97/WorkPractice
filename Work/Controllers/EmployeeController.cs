@@ -17,5 +17,19 @@ namespace Work.Controllers
             List<Employee> objEmployeeList = _db.Employees.ToList();
             return View(objEmployeeList);
         }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(Employee obj)
+        {
+            _db.Employees.Add(obj);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
     }
 }
