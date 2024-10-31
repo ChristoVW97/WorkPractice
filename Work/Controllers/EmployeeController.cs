@@ -35,6 +35,7 @@ namespace Work.Controllers
             {
                 _db.Employees.Add(obj);
                 _db.SaveChanges();
+                TempData["success"] = "New Employee added successfully";
                 return RedirectToAction("Index");
             }
            return View();
@@ -61,6 +62,7 @@ namespace Work.Controllers
             {
                 _db.Employees.Update(obj);
                 _db.SaveChanges();
+                TempData["success"] = "Employee updated successfully";
                 return RedirectToAction("Index");
             }
             return View();
@@ -91,7 +93,8 @@ namespace Work.Controllers
             }                      
                 _db.Employees.Remove(obj);
                 _db.SaveChanges();
-                return RedirectToAction("Index");
+            TempData["success"] = "Employee deleted successfully";
+            return RedirectToAction("Index");
         }
 
     }
